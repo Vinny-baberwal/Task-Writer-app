@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* background-color : skyblue; */
+            font-size: 16px;
+            font-style: verdana;
+        }
+        .box{
+            width: 600px;
+            height: 500px;
+            border: 1px red solid;
+            margin: 150px auto;
+            background-color: white;
+            overflow: hidden;
+        }
+        #to-do-box{
+            width: 560px;
+            height: 35px;
+            margin: 20px;
+            padding:6px;
+            background-color: white;
+
+            
+        }
+
+        #list li{
+            padding: 5px;
+            list-style: none;
+            margin: 10px 20px;
+            color: white;
+            background: darkblue;
+            padding: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        #list i{
+            position: absolute;
+            right: 0;
+            padding-right: 5px;
+        }
+
+    </style>
+</head>
+<body style="background-color: skyblue;">
+    <div class="box">
+
+  <input type="text" id="to-do-box" placeholder="write something here.." >
+  <ul id="list"></ul>
+
+    </div>
+    
+    <script src="https://kit.fontawesome.com/5d33128c9b.js" crossorigin="anonymous"></script>
+    <script>
+        var toDoBox =document.querySelector("#to-do-box");
+        var list =document.querySelector("#list")
+        toDoBox.addEventListener(
+            "keyup",
+            function(event){
+                if(event.key=="Enter"){
+                    var li = document.createElement("li");
+                    li.innerHTML = `${event.target.value} <i class="fa-regular fa-circle-xmark" onclick="colseit(this)"></i>`;
+                    list.appendChild(li);
+                    event.target.value= "";
+                    
+                }
+            }
+        )
+        function colseit(cross){
+        cross.parentNode.remove();
+        }
+        
+    </script>
+</body>
+</html>
